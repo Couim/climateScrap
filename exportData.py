@@ -17,9 +17,10 @@ def toXLSX(Months) :
     rowNumber=2 #on démarre à la ligne 2 sous la légende
     columnNumber=1
     ws['B1']='jour'
-    ws['C1']='temperature Min'
-    ws['D1']='temperature Max'
-    ws['E1']='pluie'
+    ws['D1']='temperature Min'
+    ws['E1']='temperature Max'
+    ws['F1']='pluie'
+    ws.merge_cells('B1:C1')
     thin_border_bottom = Border(bottom=Side(style='thin'))
 
     for month in Months:
