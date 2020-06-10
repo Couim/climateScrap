@@ -29,7 +29,6 @@ for url in Constants.URLS:
     for day in current_month.days:
         day.month = current_month  # we affiliate the current month for the day.
         day.canonicForm = datetime.date(Constants.YEARDEPARTURE, day.month.numeroMois, day.numeroJour) 
-        #day.canonicForm = str(day.numeroJour)+'/'+str(day.month.numeroMois)+'/' + str(Constants.YEARDEPARTURE)
     months.append(current_month)
     i=i+1
 

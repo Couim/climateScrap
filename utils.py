@@ -32,10 +32,13 @@ def setCompleteTableMonths(soup):
 
     try:
         table = soup.select('tbody')[0].find_all('tr', class_='', limit=nbJoursMois) #all tr
-
+        tmpMin = 0
+        tmpMax = 0
         for elem in table : 
-            tempMinMois.append(re.sub(r'^(\n)+|\n|(?!\b)( )+' , '' , elem.find_all('td')[0].get_text())) #first td is tempMin
-            tempMaxMois.append(re.sub(r'^(\n)+|\n|(?!\b)( )+', '', elem.find_all('td')[1].get_text())) #second td is tempMax
+            tmpMin = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C' , '' , elem.find_all('td')[0].get_text())
+            tmpMax = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C', '', elem.find_all('td')[1].get_text())
+            tempMinMois.append(float(tmpMin)) #first td is tempMin
+            tempMaxMois.append(float(tmpMax)) #second td is tempMax
 
     # print (len(tempMinMois))
     # print(tempMinMois)

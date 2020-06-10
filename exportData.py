@@ -1,6 +1,8 @@
 from openpyxl import Workbook
 import Constants
 from openpyxl.styles.borders import Border, Side
+from openpyxl.styles import Alignment
+from openpyxl.styles import numbers 
 
 #def toJSON(Months) :
     #toJson
@@ -9,8 +11,7 @@ from openpyxl.styles.borders import Border, Side
 #Function which take a list of months (Month object) and write it
 #to an xlsx file
 #@Months : list of months
-#
-#
+##
 def toXLSX(Months) :
     wb = Workbook()
     ws = wb.active
@@ -21,6 +22,7 @@ def toXLSX(Months) :
     ws['E1']='temperature Max'
     ws['F1']='pluie'
     ws.merge_cells('B1:C1')
+    ws.column_dimensions['B'].width=15
     thin_border_bottom = Border(bottom=Side(style='thin'))
 
     for month in Months:
@@ -28,8 +30,12 @@ def toXLSX(Months) :
             ws[Constants.ALPHABET[columnNumber]+str(rowNumber)] = day.canonicForm
             ws[Constants.ALPHABET[columnNumber+1]+str(rowNumber)] = day.day
             ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber)] = day.tempMin
+            ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber)].number_format = numbers.FORMAT_NUMBER_COMMA_SEPARATED1 
             ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber)] = day.tempMax
+            ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber)].number_format = numbers.FORMAT_NUMBER_COMMA_SEPARATED1 
+            ws[Constants.ALPHABET[columnNumber]+str(rowNumber)].alignment = Alignment(horizontal='center')
             rowNumber = rowNumber+1
+
         ws[Constants.ALPHABET[columnNumber]+str(rowNumber-1)].border = thin_border_bottom
         ws[Constants.ALPHABET[columnNumber+1]+str(rowNumber-1)].border = thin_border_bottom
         ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber-1)].border = thin_border_bottom
