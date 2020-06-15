@@ -44,15 +44,15 @@ def setCompleteTableMonths(soup):
             tmpMin = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C' , '' , elem.find_all('td')[0].get_text())
             tmpMax = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C', '', elem.find_all('td')[1].get_text())
             pluie = re.sub(r'^(\n)+|\n|(?!\b)( )+|mm', '', elem.find_all('td')[2].get_text())
-            if tempMinMois=='':
+            if tmpMin=='':
                 print ('erreur de prise sur la température : ', 'mesure -> ', tempMaxMois)
-                print ('possibilite de mettre la valeur a la moyenne des tempMinMois : ')
-                tempMaxMois = average(tempMinMois)
+                tmpMin = average(tempMinMois)
+                print ('possibilite de mettre la valeur a la moyenne des tempMinMois : ', tmpMin)
             tempMinMois.append(float(tmpMin)) #first td is tempMin
-            if tempMaxMois=='':
+            if tmpMax=='':
                 print ('erreur de prise sur la température : ', 'mesure -> ', tempMaxMois)
-                print ('possibilite de mettre la valeur a la moyenne des tempMaxMois : ')
-                tempMaxMois = average(tempMaxMois)
+                tmpMax = average(tempMaxMois)
+                print ('possibilite de mettre la valeur a la moyenne des tempMaxMois : ', tmpMax)
             tempMaxMois.append(float(tmpMax)) #second td is tempMax
             if pluie=='':
                 pluie=0.0

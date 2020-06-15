@@ -9,3 +9,4 @@ pip install beautifulSoup
 ##Todo 
 
 - [ ]  add the possibility to get the max temperature and min temperature inside a day URL, if we don't have it by the month stat URL.
+- [ ] add canonical format to the filename (xslx)

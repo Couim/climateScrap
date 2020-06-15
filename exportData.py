@@ -41,8 +41,8 @@ def toXLSX(Months) :
         ws[Constants.ALPHABET[columnNumber+1]+str(rowNumber-1)].border = thin_border_bottom
         ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber-1)].border = thin_border_bottom
         ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber-1)].border = thin_border_bottom
-    wb.save('SMH2019_infoclimat.xlsx')
-    print('Le fichier SMH2019_infoclimat.xslx a été écrit')
+    wb.save('output.xlsx')
+    print('Le fichier output.xslx a été écrit')
 
 
 #def toXML(Months):
