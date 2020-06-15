@@ -18,21 +18,22 @@ def toXLSX(Months) :
     rowNumber=2 #on démarre à la ligne 2 sous la légende
     columnNumber=1
     ws['B1']='jour'
-    ws['D1']='temperature Min'
-    ws['E1']='temperature Max'
-    ws['F1']='pluie'
-    ws.merge_cells('B1:C1')
+    ws['C1']='temperature Min'
+    ws['D1']='temperature Max'
+    ws['E1']='pluie'
+    # ws.merge_cells('B1:C1')
     ws.column_dimensions['B'].width=15
     thin_border_bottom = Border(bottom=Side(style='thin'))
 
     for month in Months:
         for day in month.days:
             ws[Constants.ALPHABET[columnNumber]+str(rowNumber)] = day.canonicForm
-            ws[Constants.ALPHABET[columnNumber+1]+str(rowNumber)] = day.day
-            ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber)] = day.tempMin
-            ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber)].number_format = numbers.FORMAT_NUMBER_COMMA_SEPARATED1 
-            ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber)] = day.tempMax
-            ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber)].number_format = numbers.FORMAT_NUMBER_COMMA_SEPARATED1 
+            ws[Constants.ALPHABET[columnNumber+1]+str(rowNumber)] = day.tempMin
+            ws[Constants.ALPHABET[columnNumber+1]+str(rowNumber)].number_format = numbers.BUILTIN_FORMATS[4] 
+            ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber)] = day.tempMax
+            ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber)].number_format = numbers.BUILTIN_FORMATS[4]
+            ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber)] = day.pluie 
+            ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber)].number_format = numbers.BUILTIN_FORMATS[4]
             ws[Constants.ALPHABET[columnNumber]+str(rowNumber)].alignment = Alignment(horizontal='center')
             rowNumber = rowNumber+1
 
