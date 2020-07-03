@@ -41,8 +41,8 @@ def toXLSX(Months) :
         ws[Constants.ALPHABET[columnNumber+1]+str(rowNumber-1)].border = thin_border_bottom
         ws[Constants.ALPHABET[columnNumber+2]+str(rowNumber-1)].border = thin_border_bottom
         ws[Constants.ALPHABET[columnNumber+3]+str(rowNumber-1)].border = thin_border_bottom
-    wb.save('output.xlsx')
-    print('Le fichier output.xslx a été écrit')
+    wb.save(Constants.OUTPUT_FILENAME)
+    print('Le fichier', Constants.OUTPUT_FILENAME, ' a été écrit')
 
 
 #def toXML(Months):

@@ -48,12 +48,12 @@ def setCompleteTableMonths(soup):
                 print ('erreur de prise sur la température : ', 'mesure -> ', tempMaxMois)
                 tmpMin = average(tempMinMois)
                 print ('possibilite de mettre la valeur a la moyenne des tempMinMois : ', tmpMin)
-            tempMinMois.append(float(tmpMin)) #first td is tempMin
+            tempMinMois.append(float("{:10.1f}".format(float(tmpMin)))) #first td is tempMin
             if tmpMax=='':
                 print ('erreur de prise sur la température : ', 'mesure -> ', tempMaxMois)
                 tmpMax = average(tempMaxMois)
                 print ('possibilite de mettre la valeur a la moyenne des tempMaxMois : ', tmpMax)
-            tempMaxMois.append(float(tmpMax)) #second td is tempMax
+            tempMaxMois.append(float("{:10.1f}".format(float(tmpMax)))) #second td is tempMax
             if pluie=='':
                 pluie=0.0
             pluieMois.append(float(pluie))
