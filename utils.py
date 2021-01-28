@@ -41,9 +41,13 @@ def setCompleteTableMonths(soup):
         tmpMax = 0
         pluie = 0
         for elem in table : 
-            tmpMin = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C' , '' , elem.find_all('td')[0].get_text())
-            tmpMax = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C', '', elem.find_all('td')[1].get_text())
-            pluie = re.sub(r'^(\n)+|\n|(?!\b)( )+|mm', '', elem.find_all('td')[2].get_text())
+            #tmpMin = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C' , '' , elem.find_all('td')[0].get_text()) 
+            #tmpMax = re.sub(r'^(\n)+|\n|(?!\b)( )+|°C', '', elem.find_all('td')[1].get_text())
+            #pluie = re.sub(r'^(\n)+|\n|(?!\b)( )+|mm', '', elem.find_all('td')[2].get_text())
+            tmpMin = elem.select('td:nth-child(2) > span:nth-child(3)')[0].text
+            tmpMax = elem.select('td:nth-child(3) > span:nth-child(3)')[0].text
+            pluie = elem.select('td:nth-child(4) > span:nth-child(2)')[0].text
+            
             if tmpMin=='':
                 print ('erreur de prise sur la température : ', 'mesure -> ', tempMaxMois)
                 tmpMin = average(tempMinMois)
